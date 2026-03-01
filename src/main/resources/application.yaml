@@ -1,0 +1,40 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: vault-backend
+  datasource:
+    url: jdbc:h2:file:./data/vault-db
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    open-in-view: false
+
+vault:
+  jwt:
+    secret: ${JWT_SECRET:vault-local-dev-secret-min-32-chars!!}
+    expiration-ms: 3600000
+    refresh-expiration-ms: 604800000
+  alpaca:
+    broker-base-url: https://broker-api.sandbox.alpaca.markets
+    markets-base-url: https://data.sandbox.alpaca.markets
+    stream-base-url: wss://stream.data.sandbox.alpaca.markets
+    api-key: ${ALPACA_API_KEY:}
+    api-secret: ${ALPACA_API_SECRET:}
+  finnhub:
+    base-url: https://finnhub.io/api/v1
+    api-key: ${FINNHUB_API_KEY:}
+  websocket:
+    mode: live
+    simulated-tick-interval-ms: 500
+  file-storage:
+    base-path: ./data/uploads
