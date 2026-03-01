@@ -1,0 +1,5 @@
+package com.vault.entity;
+
+public enum OnboardingStatus {
+    NOT_STARTED, PERSONAL_INFO, FINANCIAL, CITIZENSHIP, EMPLOYMENT, AGREEMENTS, KYC_PENDING, KYC_APPROVED, COMPLETE
+}
